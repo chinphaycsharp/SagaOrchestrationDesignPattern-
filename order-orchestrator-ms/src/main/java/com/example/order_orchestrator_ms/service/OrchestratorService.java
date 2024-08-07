@@ -48,8 +48,8 @@ public class OrchestratorService {
     }
 
     private Workflow getOrderWorkflow(OrchestratorRequestDTO requestDTO) {
-        WorkflowStep paymentStep = new PaymentStep(paymentClient, getPaymentRequestDTO(requestDTO));
         WorkflowStep inventoryStep = new InventoryStep(inventoryClient, getInventoryRequestDTO(requestDTO));
+        WorkflowStep paymentStep = new PaymentStep(paymentClient, getPaymentRequestDTO(requestDTO));
         return new OrderWorkflow(List.of(paymentStep, inventoryStep));
     }
 
